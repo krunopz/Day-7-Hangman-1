@@ -17,19 +17,25 @@ chosen_word.split()
 print(chosen_word)
 
 
-#TODO-2 - Ask the user to guess a letter and assign their answer to a variable called guess. Make guess lowercase.
-guess=input("Choose the letter: \n")
-#TODO-3 - Check if the letter the user guessed (guess) is one of the letters in the chosen_word.
 aim=0
-for n in range(0,number_of_letters):
-  if chosen_word[n]==guess:
-    hidden[n]=guess
-    aim+=1
+end=0
+#TODO-2 - Ask the user to guess a letter and assign their answer to a variable called guess. Make guess lowercase.
+while end!=number_of_letters:
+  end=0
+  guess=input("Which letter would You like to try: \n").lower()
+#TODO-3 - Check if the letter the user guessed (guess) is one of the letters in the chosen_word.
 
+  for n in range(0,number_of_letters):
+    if chosen_word[n]==guess:
+      hidden[n]=guess
+      aim+=1
 
-
-unhidden=""
-for i in range(0, number_of_letters):
-  unhidden+=hidden[i]+" "
-print(unhidden)
-
+  unhidden=""
+  for i in range(0, number_of_letters):
+    unhidden+=hidden[i]+" "
+  print(unhidden)
+#TODO 4 Check if the user guessed all the letters:
+  for n in range(0,number_of_letters):
+    if hidden[n]!="_":
+      end+=1
+  print(end)
