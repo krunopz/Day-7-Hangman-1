@@ -74,58 +74,59 @@ if choice==1:
 #_______________________________________________________________________
 else:
   print("\n Dobro došli u igru! Cilj igre je pogoditi sva slova u skrivenoj riječi prije nego nacrtate cijelog čovjeka. Svaki put kada pogriješite bit će nacrtan još jedan dio čovjeka. Imate pravo na samo 6 grešaka. Nemojte ostaviti čovjeka da visi!")
-word_list = rijeci.word_list
+  word_list = rijeci.word_list
 
 #TODO-1 - Randomly choose a word from the word_list and assign it to a variable called chosen_word.
-chosen_word= random.choice(word_list)
-clear()
+  chosen_word= random.choice(word_list)
+
 #making hidden word in shape of _ _ _ _ _ _ 
-number_of_letters=len(chosen_word)
-hidden=list()
-for i in range(0,number_of_letters):
-  hidden.append("_")
+  number_of_letters=len(chosen_word)
+  hidden=list()
+  for i in range(0,number_of_letters):
+    hidden.append("_")
 #print(hidden)
 #print(number_of_letters)
-chosen_word.split()
+  chosen_word.split()
 #print(chosen_word)
 
 
-aim=0
-end=0
-dead=0
-print(art.stages[6])
-#TODO-2 - Ask the user to guess a letter and assign their answer to a variable called guess. Make guess lowercase.
-while end!=number_of_letters and dead!=6:
+  aim=0
   end=0
-  guess=input("S kojim slovom želite pokušati: \n").lower()
+  dead=0
+  print(art.stages[6])
+#TODO-2 - Ask the user to guess a letter and assign their answer to a variable called guess. Make guess lowercase.
+  while end!=number_of_letters and dead!=6:
+    end=0
+    guess=input("S kojim slovom želite pokušati: \n").lower()
 #TODO-3 - Check if the letter the user guessed (guess) is one of the letters in the chosen_word.
+    clear()
 
-  for n in range(0,number_of_letters):
-    if chosen_word[n]==guess:
-      hidden[n]=guess
-      aim+=1
+    for n in range(0,number_of_letters):
+      if chosen_word[n]==guess:
+        hidden[n]=guess
+        aim+=1
   #print(f"aim={aim}")
 #TODO 5 If wrong choice:
-  if aim==0:
-    print("Nema toga slova u riječi!")
-    dead+=1
-  aim=0
+    if aim==0:
+      print("Nema toga slova u riječi!")
+      dead+=1
+    aim=0
   #print(f"aim={aim}")
   #print(f"dead={dead}")
-  print(art.stages[6-dead])
+    print(art.stages[6-dead])
  
-  unhidden=""
-  for i in range(0, number_of_letters):
-    unhidden+=hidden[i]+" "
-  print(unhidden)
+    unhidden=""
+    for i in range(0, number_of_letters):
+      unhidden+=hidden[i]+" "
+    print(unhidden)
 #TODO 4 Check if the user guessed all the letters:
-  for n in range(0,number_of_letters):
-    if hidden[n]!="_":
-      end+=1
-  print(end)
+    for n in range(0,number_of_letters):
+      if hidden[n]!="_":
+        end+=1
+    print(end)
 
 
-if end==number_of_letters:
-  print("POBIJEDA!")
-elif dead==6:
-  print(f"K vrapcu! Čovjek je predugo visio. Skrivena riječ je bila  {chosen_word.upper()}")
+  if end==number_of_letters:
+    print("POBIJEDA!")
+  elif dead==6:
+    print(f"K vrapcu! Čovjek je predugo visio. Skrivena riječ je bila  {chosen_word.upper()}")
